@@ -1,0 +1,53 @@
+# Jeremy Haas Portfolio - CMO & AI Infrastructure Engineer
+
+## Professional Identity
+Chief Marketing Officer and AI Infrastructure Engineer with 10+ years experience building self-hosted AI pipelines and marketing automation systems. Based in Germany, fluent in German and English.
+
+## Core Infrastructure
+
+### AI Development Rig (Primary Compute)
+- **Dual CPUs**: Intel Xeon E5-2697 v4 (72 threads total)
+- **Dual GPUs**: NVIDIA RTX 3090 (48GB VRAM combined)
+- **Memory**: 256GB DDR4-2400 ECC RDIMM
+- **Storage**: 2.3TB SSD
+- **Performance**: 71 TFLOPS FP32, 568 TFLOPS Tensor
+- **Power**: 1,300W peak draw
+
+### Homelab Network
+- **WAN**: Wingo 1 Gbit/s fiber
+- **Gateway**: Ubiquiti Cloud Gateway Ultra
+- **Switch**: Ubiquiti US-8-60W PoE
+- **Rack**: Lanberg 12U
+- **NAS**: Synology DS923+ (24TB RAID)
+- **Compute**: Raspberry Pi 5 with Hailo-8L AI HAT (13 TOPS), HP Mini PCs
+
+## Self-Hosted Stack
+
+### AI/ML Services
+- **LLM Interface**: Open WebUI
+- **LLM Backend**: Ollama API
+- **Document AI**: Paperless-ngx (OCR)
+
+### Infrastructure
+- **Reverse Proxy**: Traefik (SSL, service discovery)
+- **Container Mgmt**: Komodo
+- **Monitoring**: Beszel, GPU Monitoring, Uptime Kuma
+- **Notifications**: Ntfy
+- **Files**: Filebrowser
+- **NVR**: Frigate (AI object detection)
+- **Network Mgmt**: Upsnap (Wake-on-LAN)
+
+## Professional Metrics
+- **Marketing Experience**: 10+ years
+- **AI Projects**: 50+ completed
+- **Average ROI Growth**: 500%
+
+## Contact & Language
+- **LinkedIn**: linkedin.com/in/jeremyhaas
+- **Languages**: German (Native), English (Fluent)
+- **Location**: Germany
+
+## Technical Expertise
+Docker, Proxmox, Python, JavaScript, NVIDIA GPU optimization, Hailo AI accelerators, Ubiquiti networking, self-hosted infrastructure
+
+*All infrastructure is open-source and self-hosted, demonstrating production AI deployment without cloud dependencies.*

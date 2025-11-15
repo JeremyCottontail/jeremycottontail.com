@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jeremy Haas - CMO & AI Enthusiast</title>
+    <!-- Immediate theme application to prevent flash -->
+    <script>
+      // Apply theme immediately before page renders
+      (function() {
+        const darkMode = localStorage.getItem('darkMode') === 'true';
+        document.documentElement.classList.add(darkMode ? 'dark' : 'light');
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/main.css">
+  </head>
+  <body>
+    <!-- Floating Blob Background -->
+    <div class="blob" id="blob"></div>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+      <div class="flex items-center space-x-6">
+        <div class="text-sm font-semibold gradient-text">Jeremy Haas</div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="#home" class="nav-link" data-en="Home" data-de="Start">Start</a>
+          <a href="#tools" class="nav-link" data-en="Tools & Services" data-de="Tools & Dienste">Tools & Dienste</a>
+          <a href="#ai-rig" class="nav-link" data-en="AI Rig" data-de="AI Rig">AI Rig</a>
+          <a href="#homelab-rig" class="nav-link" data-en="Homelab Rig" data-de="Homelab Rig">Homelab Rig</a>
+          <a href="#about" class="nav-link" data-en="About" data-de="Über mich">Über mich</a>
+          <a href="#footer" class="nav-link" data-en="Contact" data-de="Kontakt">Kontakt</a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="language-container">
+            <button class="language-btn active" data-lang="de">DE</button>
+            <button class="language-btn" data-lang="en">EN</button>
+          </div>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <span class="theme-icon sun-icon">☀️</span>
+            <span class="theme-icon moon-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-24 px-4">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-center lg:text-left">
+          <div class="hero-content">
+            <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+              <span data-en="Hi, I'm" data-de="Hallo, ich bin">Hallo, ich bin</span>
+              <br>
+              <span class="gradient-text">Jeremy Haas</span>
+            </h1>
+            <div class="text-xl lg:text-2xl mb-8 text-gray-600 dark:text-gray-300">
+              <span class="typewriter-text">
+                <span data-en="CMO at N47. Homelab hoarder. AI prompt whisperer." data-de="CMO bei N47. Homelab-Messie. KI-Prompt-Flüsterer."></span>
+              </span>
+            </div>
+            <p class="text-lg mb-8 text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed">
+              <span data-en="Leading digital marketing at N47 while quietly building Skynet in my home office. Featuring locally-hosted LLMs, image generation pipelines, and questionable network topology." data-de="Leite digitales Marketing bei N47, während ich nebenbei still und heimlich Skynet in meinem Home Office aufbaue. Mit lokal gehosteten LLMs, Bildgenerierungs-Pipelines und fragwürdiger Netzwerktopologie.">Leite digitales Marketing bei N47, während ich nebenbei still und heimlich Skynet in meinem Home Office aufbaue. Mit lokal gehosteten LLMs, Bildgenerierungs-Pipelines und fragwürdiger Netzwerktopologie.</span>
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button class="btn-gradient px-8 py-3 rounded-xl text-white font-semibold" data-en="Explore Tools & Services" data-de="Tools und Dienste erkunden">Tools und Dienste erkunden</button>
+              <button class="px-8 py-3 rounded-xl border border-gray-300 dark:border-gray-600 font-semibold hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800" data-en="Get in Touch" data-de="Kontakt aufnehmen">Kontakt aufnehmen</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <div class="reveal-on-scroll stagger-delay-2 relative">
+            <img src="resources/N47_Jeremy_Haas.jpg" alt="Jeremy Haas" class="w-full max-w-md rounded-2xl shadow-2xl">
+            <div class="absolute -top-4 -right-4 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute -bottom-4 -left-4 w-72 h-72 bg-gradient-to-br from-pink-400 to-orange-600 rounded-full opacity-20 blur-3xl"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AI Tools Dashboard -->
+    <section id="tools" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-en="Tools & Services" data-de="Tools & Dienste">Tools & Dienste</h2>
+          <p class="text-xl text-contrast max-w-3xl mx-auto leading-relaxed" data-en="Professional AI tools for chat, image generation, and workflow automation. And everything Open-Source!" data-de="Professionelle KI-Tools für Chat, Bildgenerierung und Workflow-Automatisierung. Und das alles Open-Source!">Professionelle KI-Tools für Chat, Bildgenerierung und Workflow-Automatisierung. Und das alles Open-Source!</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Filebrowser -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-1">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-blue rounded-lg flex items-center justify-center">
+                <span class="text-2xl">📁</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Filebrowser" data-de="Filebrowser">Filebrowser</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Web-based file management interface with preview, edit, and sharing capabilities." data-de="Webbasierte Dateiverwaltungsoberfläche mit Vorschau-, Bearbeitungs- und Freigabefunktionen.">Webbasierte Dateiverwaltungsoberfläche mit Vorschau-, Bearbeitungs- und Freigabefunktionen.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">File Management</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">Web UI</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">Share</span>
+            </div>
+            <a href="https://filebrowser.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-blue text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Filebrowser" data-de="Filebrowser öffnen">Filebrowser öffnen</a>
+          </div>
+          <!-- Traefik -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-2">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-orange rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🔀</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Traefik" data-de="Traefik">Traefik</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Reverse proxy and load balancer with automatic SSL and service discovery." data-de="Reverse Proxy und Load Balancer mit automatischem SSL und Service Discovery.">Reverse Proxy und Load Balancer mit automatischem SSL und Service Discovery.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full card-tag">Reverse Proxy</span>
+              <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full card-tag">Load Balancer</span>
+              <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full card-tag">SSL</span>
+            </div>
+            <a href="https://traefik.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-orange text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Traefik" data-de="Traefik öffnen">Traefik öffnen</a>
+          </div>
+          <!-- Frigate -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-3">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-red rounded-lg flex items-center justify-center">
+                <span class="text-2xl">📹</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Frigate" data-de="Frigate">Frigate</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Open-source NVR with AI-powered object detection for home security." data-de="Open-Source NVR mit KI-basierter Objekterkennung für die Hausüberwachung.">Open-Source NVR mit KI-basierter Objekterkennung für die Hausüberwachung.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag">NVR</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag">AI Detection</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag">Security</span>
+            </div>
+            <a href="https://frigate.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-red text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Frigate" data-de="Frigate öffnen">Frigate öffnen</a>
+          </div>
+          <!-- Beszel -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-4">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-green rounded-lg flex items-center justify-center">
+                <span class="text-2xl">📈</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Beszel" data-de="Beszel">Beszel</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Lightweight system monitoring hub with Docker container metrics." data-de="Leichtgewichtiges System-Monitoring-Zentrum mit Docker-Containern-Metriken.">Leichtgewichtiges System-Monitoring-Zentrum mit Docker-Containern-Metriken.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full card-tag">Monitoring</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full card-tag">Docker</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full card-tag">Metrics</span>
+            </div>
+            <a href="https://beszel.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-green text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Beszel" data-de="Beszel öffnen">Beszel öffnen</a>
+          </div>
+          <!-- Uptime Kuma -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-5">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                <span class="text-2xl">⏱️</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Uptime Kuma" data-de="Uptime Kuma">Uptime Kuma</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Self-hosted uptime monitoring with alerting for all services." data-de="Selbst gehostetes Uptime-Monitoring mit Alerting für alle Dienste.">Selbst gehostetes Uptime-Monitoring mit Alerting für alle Dienste.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Uptime</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Monitoring</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Alerts</span>
+            </div>
+            <a href="https://uptime.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-purple text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Uptime Kuma" data-de="Uptime Kuma öffnen">Uptime Kuma öffnen</a>
+          </div>
+          <!-- Proxmox -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-blue rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🖥️</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Proxmox VE" data-de="Proxmox VE">Proxmox VE</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Virtualization management platform for VMs and LXC containers." data-de="Virtualisierungs-Management-Plattform für VMs und LXC-Container.">Virtualisierungs-Management-Plattform für VMs und LXC-Container.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">Virtualization</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">VMs</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">LXC</span>
+            </div>
+            <a href="https://proxmox.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-blue text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Proxmox" data-de="Proxmox öffnen">Proxmox öffnen</a>
+          </div>
+          <!-- Komodo -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-1">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-teal rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🐳</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Komodo" data-de="Komodo">Komodo</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Docker container management with user-friendly web interface." data-de="Docker-Container-Verwaltung mit benutzerfreundlicher Web-Oberfläche.">Docker-Container-Verwaltung mit benutzerfreundlicher Web-Oberfläche.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag">Docker</span>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag">Containers</span>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag">Management</span>
+            </div>
+            <a href="https://komodo.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-teal text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Komodo" data-de="Komodo öffnen">Komodo öffnen</a>
+          </div>
+          <!-- Paperless -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-2">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-green rounded-lg flex items-center justify-center">
+                <span class="text-2xl">📄</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Paperless" data-de="Paperless">Paperless</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Document management system with OCR for paperless office workflows." data-de="Dokumentenmanagement-System mit OCR für papierlose Arbeitsabläufe.">Dokumentenmanagement-System mit OCR für papierlose Arbeitsabläufe.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full card-tag">Documents</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full card-tag">OCR</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full card-tag">PDF</span>
+            </div>
+            <a href="https://paperless.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-green text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Paperless" data-de="Paperless öffnen">Paperless öffnen</a>
+          </div>
+          <!-- Upsnap -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-3">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-orange rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🔌</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Upsnap" data-de="Upsnap">Upsnap</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Wake-on-LAN management for network devices with scheduling." data-de="Wake-on-LAN-Verwaltung für Netzwerkgeräte mit Zeitplanung.">Wake-on-LAN-Verwaltung für Netzwerkgeräte mit Zeitplanung.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full card-tag">Wake-on-LAN</span>
+              <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full card-tag">Network</span>
+              <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded-full card-tag">Automation</span>
+            </div>
+            <a href="https://upsnap.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-orange text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Upsnap" data-de="Upsnap öffnen">Upsnap öffnen</a>
+          </div>
+          <!-- OpenWebUI -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-4">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                <span class="text-2xl">💬</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Open WebUI" data-de="Open WebUI">Open WebUI</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Modern chat interface for LLMs with multiple model support." data-de="Moderne Chat-Oberfläche für LLMs mit Unterstützung mehrerer Modelle.">Moderne Chat-Oberfläche für LLMs mit Unterstützung mehrerer Modelle.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Chat Interface</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Multi-Model</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">History</span>
+            </div>
+            <a href="https://openwebui.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-purple text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open WebUI" data-de="WebUI öffnen">WebUI öffnen</a>
+          </div>
+          <!-- Ntfy -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-5">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-red rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🔔</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Ntfy" data-de="Ntfy">Ntfy</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="HTTP-based pub-sub notification service for custom alerts." data-de="HTTP-basierter Pub-Sub-Benachrichtigungsdienst für benutzerdefinierte Alerts.">HTTP-basierter Pub-Sub-Benachrichtigungsdienst für benutzerdefinierte Alerts.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag">Notifications</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-orange-200 text-xs rounded-full card-tag">Webhooks</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag">Pub-Sub</span>
+            </div>
+            <a href="https://ntfy.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-red text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Ntfy" data-de="Ntfy öffnen">Ntfy öffnen</a>
+          </div>
+          <!-- GPU Monitoring -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-1">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                <span class="text-2xl">📊</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="GPU Monitoring" data-de="GPU Monitoring">GPU Monitoring</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Real-time GPU utilization, temperature, and performance metrics across all nodes." data-de="Echtzeit-GPU-Auslastung, Temperatur und Performance-Metriken über alle Nodes.">Echtzeit-GPU-Auslastung, Temperatur und Performance-Metriken über alle Nodes.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">GPU</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Monitoring</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag">Metrics</span>
+            </div>
+            <a href="https://gpu-monitoring.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-purple text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="View Metrics" data-de="Metriken anzeigen">Metriken anzeigen</a>
+          </div>
+          <!-- Ollama -->
+          <div class="hardware-card card-hover card rounded-xl p-6 shadow-lg stagger-delay-2">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-blue rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🤖</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="status-indicator w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-sm text-muted" data-en="Online" data-de="Online">Online</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="Ollama API" data-de="Ollama API">Ollama API</h3>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Local LLM API service supporting multiple models with high performance." data-de="Lokaler LLM-API-Dienst mit Unterstützung mehrerer Modelle mit hoher Performance.">Lokaler LLM-API-Dienst mit Unterstützung mehrerer Modelle mit hoher Performance.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">LLMs</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">API</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full card-tag">Local AI</span>
+            </div>
+            <a href="https://ollama.jeremycottontail.com" target="_blank" class="w-full py-2 px-4 card-action-btn-blue text-white rounded-lg transition-colors text-sm font-medium inline-block text-center" data-en="Open Ollama API" data-de="Ollama API öffnen">Ollama API öffnen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AI Development Rig Section -->
+    <section id="ai-rig" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-en="On-Premise AI Infrastructure" data-de="Lokale KI-Infrastruktur">Lokale KI-Infrastruktur</h2>
+          <p class="text-xl text-contrast max-w-3xl mx-auto leading-relaxed" data-en="Fully self-hosted AI pipeline from model training to deployment" data-de="Vollständig selbst gehostete KI-Pipeline von Modell-Training bis Deployment"> Vollständig selbst gehostete KI-Pipeline von Modell-Training bis Deployment </p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Server/Computer Image -->
+          <div class="reveal-on-scroll stagger-delay-1">
+            <div class="relative">
+              <img src="resources/ai-rig.JPEG" alt="AI Development Server" class="w-full rounded-2xl shadow-2xl">
+              <div class="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full opacity-20 blur-3xl"></div>
+              <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-pink-400 to-orange-600 rounded-full opacity-20 blur-3xl"></div>
+              <!-- Status indicators overlay -->
+              <div class="absolute top-4 right-4 flex flex-col space-y-2">
+                <div class="bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-2">
+                  <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span class="text-white text-sm" data-en="Online" data-de="Online">Online</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Hardware Components Grid -->
+          <div class="reveal-on-scroll stagger-delay-2">
+            <!-- Hardware Components Grid -->
+            <div class="grid grid-cols-2 gap-4">
+              <!-- CPU -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-orange rounded-lg flex items-center justify-center">
+                    <span class="text-lg">⚡</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full" data-en="72 Threads" data-de="72 Threads">72 Threads</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Processor" data-de="Prozessor">Prozessor</h3>
+                <p class="text-xs text-muted">2x Xeon E5-2697 v4 @ 2.30-3.60 GHz</p>
+              </div>
+              <!-- GPU -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🎮</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full" data-en="Training" data-de="Training">Training</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Graphics Cards" data-de="Grafikkarten">Grafikkarten</h3>
+                <p class="text-xs text-muted">2x RTX 3090 24GB GDDR6X</p>
+              </div>
+              <!-- RAM -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-blue rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🧠</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">256GB</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Memory" data-de="Arbeitsspeicher">Arbeitsspeicher</h3>
+                <p class="text-xs text-muted">DDR4-2400 ECC RDIMM</p>
+              </div>
+              <!-- Storage -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-teal rounded-lg flex items-center justify-center">
+                    <span class="text-lg">💾</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full">2.3TB</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Storage" data-de="Speicher">Speicher</h3>
+                <p class="text-xs text-muted">300GB SSD + 2TB SSD</p>
+              </div>
+            </div>
+            <!-- Performance Stats -->
+            <div class="mt-6 p-4 card rounded-xl">
+              <h4 class="text-sm font-semibold mb-3 text-contrast" data-en="Performance Metrics" data-de="Leistungsmetriken">Leistungsmetriken</h4>
+              <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <div class="text-lg font-bold gradient-text">71,2 TFLOPS</div>
+                  <div class="text-xs text-muted" data-en="GPU FP32" data-de="GPU FP32">GPU FP32</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold gradient-text">284 TFLOPS</div>
+                  <div class="text-xs text-muted" data-en="AI (Tensor)" data-de="AI (Tensor)">AI (Tensor)</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold gradient-text">936 GB/s</div>
+                  <div class="text-xs text-muted" data-en="Memory Bandwith" data-de="Speicherbandbreite">Speicherbandbreite</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold gradient-text">48GB</div>
+                  <div class="text-xs text-muted" data-en="VRAM Capacity" data-de="VRAM Kapazität">VRAM Kapazität</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold gradient-text">700W</div>
+                  <div class="text-xs text-muted" data-en="Energy Consumption" data-de="Energieverbrauch">Energieverbrauch</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold gradient-text">20'992 CUDA Cores</div>
+                  <div class="text-xs text-muted" data-en="CUDA Cores" data-de="CUDA Cores">CUDA Cores</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="homelab-rig" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-en="Homelab Infrastructure" data-de="Homelab-Infrastruktur">Homelab-Infrastruktur</h2>
+          <p class="text-xl text-contrast max-w-3xl mx-auto leading-relaxed" data-en="Fully integrated network, compute, and storage infrastructure for AI development and homelab services" data-de="Vollständig integrierte Netzwerk-, Compute- und Storage-Infrastruktur für KI-Entwicklung und Homelab-Dienste">Vollständig integrierte Netzwerk-, Compute- und Storage-Infrastruktur für KI-Entwicklung und Homelab-Dienste</p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Infrastructure Components Grid (Left Column) -->
+          <div class="reveal-on-scroll stagger-delay-2">
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Wingo 1 Gbit/s -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-1">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-blue rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🚀</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">1 Gbps</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Wingo Internet" data-de="Wingo Internet">Wingo Internet</h3>
+                <p class="text-xs text-muted">1 Gbit/s Fiber</p>
+              </div>
+              <!-- Wingo Fiber Modem/Router -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-2">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-orange rounded-lg flex items-center justify-center">
+                    <span class="text-lg">📡</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full">Fiber</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Fiber Modem" data-de="Fiber Modem">Fiber Modem</h3>
+                <p class="text-xs text-muted">Wingo Router/ONT</p>
+              </div>
+              <!-- Lanberg 12U Rack -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-3">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-teal rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🗄️</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full">12U</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Server Rack" data-de="Server Rack">Server Rack</h3>
+                <p class="text-xs text-muted">Lanberg WF10-2312-10B</p>
+              </div>
+              <!-- Ubiquiti Cloud Gateway Ultra -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-4">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🌩️</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full" data-en="Gateway" data-de="Gateway">Gateway</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Cloud Gateway Ultra" data-de="Cloud Gateway Ultra">Cloud Gateway Ultra</h3>
+                <p class="text-xs text-muted">Ubiquiti UniFi</p>
+              </div>
+              <!-- Ubiquiti US-8-60W -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-5">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-green rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🔌</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">PoE</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Network Switch" data-de="Netzwerk Switch">Netzwerk Switch</h3>
+                <p class="text-xs text-muted">Ubiquiti US-8-60w</p>
+              </div>
+              <!-- Raspberry Pi 5 + AI HAT -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-6">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-red rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🤖</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">13 TOPS</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Pi5 + AI HAT" data-de="Pi5 + AI HAT">Pi5 + AI HAT</h3>
+                <p class="text-xs text-muted">RPi5 + Hailo-8L</p>
+              </div>
+              <!-- Raspberry Pi 5 -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-1">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-orange rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🥧</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full">4GB</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Raspberry Pi 5" data-de="Raspberry Pi 5">Raspberry Pi 5</h3>
+                <p class="text-xs text-muted">4GB RAM ARM</p>
+              </div>
+              <!-- HP EliteDesk 800 G3 Mini -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-2">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-blue rounded-lg flex items-center justify-center">
+                    <span class="text-lg">💼</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">i7-6700</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="HP EliteDesk Mini" data-de="HP EliteDesk Mini">HP EliteDesk Mini</h3>
+                <p class="text-xs text-muted">i7-6700 | 8GB | 256GB SSD</p>
+              </div>
+              <!-- HP ProDesk 600 G3 -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-3">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🖥️</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">i5-7500T</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="HP ProDesk Mini" data-de="HP ProDesk Mini">HP ProDesk Mini</h3>
+                <p class="text-xs text-muted">i5-7500T | 8GB | 256GB NVMe</p>
+              </div>
+              <!-- Synology DS923+ NAS -->
+              <div class="hardware-card card-hover rounded-xl p-4 shadow-lg stagger-delay-4">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 card-icon-bg-teal rounded-lg flex items-center justify-center">
+                    <span class="text-lg">💾</span>
+                  </div>
+                  <div class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full">24TB</div>
+                </div>
+                <h3 class="font-semibold text-sm text-contrast mb-1" data-en="Synology NAS" data-de="Synology NAS">Synology NAS</h3>
+                <p class="text-xs text-muted">DS923+ | 4x 6TB RAID</p>
+              </div>
+            </div>
+          </div>
+          <!-- Homelab Image (Right Column) -->
+          <div class="reveal-on-scroll stagger-delay-1">
+            <div class="relative">
+              <img src="resources/homelab.jpeg" alt="Homelab Infrastructure" class="w-full rounded-2xl shadow-2xl">
+              <div class="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full opacity-20 blur-3xl"></div>
+              <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-pink-400 to-orange-600 rounded-full opacity-20 blur-3xl"></div>
+              <!-- Status indicators overlay -->
+              <div class="absolute top-4 right-4 flex flex-col space-y-2">
+                <div class="bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-2">
+                  <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span class="text-white text-sm" data-en="Online" data-de="Online">Online</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section with Interactive Timeline -->
+    <section id="about" class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-en="My Journey" data-de="Mein Werdegang">Mein Werdegang</h2>
+          <p class="text-xl text-contrast max-w-3xl mx-auto leading-relaxed" data-en="From software engineer to AI-driven marketing leader" data-de="Vom Softwareingenieur zur KI-gestützten Marketing-Führungskraft">Vom Softwareingenieur zur KI-gestützten Marketing-Führungskraft</p>
+        </div>
+        <!-- Interactive Timeline -->
+        <div class="timeline-container reveal-on-scroll stagger-delay-1">
+          <div class="timeline-line"></div>
+          <div class="timeline-item" data-year="2024">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card rounded-xl p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-xl font-bold gradient-text" data-en="CMO & Co-Founder" data-de="CMO & Mitgründer">CMO & Mitgründer</h3>
+                <span class="timeline-year">2018-Heute</span>
+              </div>
+              <h4 class="text-lg font-semibold text-contrast mb-2" data-en="N47 · Zurich, Switzerland" data-de="N47 · Zürich, Schweiz">N47 · Zürich, Schweiz</h4>
+              <p class="text-muted mb-3" data-en="Transformed N47 from a 7-person startup to an 80-employee technology company through comprehensive marketing and brand strategy. Bridge technical and creative teams to deliver exceptional client outcomes." data-de="Transformierte N47 von einem 7-Personen-Startup zu einem Technologieunternehmen mit 80 Mitarbeitenden durch umfassende Marketing- und Markenstrategie. Verbinde technische und kreative Teams zur Erzielung aussergewöhnlicher Kundenergebnisse.">Transformierte N47 von einem 7-Personen-Startup zu einem Technologieunternehmen mit 80 Mitarbeitenden durch umfassende Marketing- und Markenstrategie. Verbinde technische und kreative Teams zur Erzielung aussergewöhnlicher Kundenergebnisse.</p>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="timeline-tag" data-en="Growth Strategy" data-de="Wachstumsstrategie">Wachstumsstrategie</span>
+                <span class="timeline-tag" data-en="Team Leadership" data-de="Teamführung">Teamführung</span>
+                <span class="timeline-tag" data-en="Brand Development" data-de="Markenentwicklung">Markenentwicklung</span>
+                <span class="timeline-tag" data-en="AI Integration" data-de="KI-Integration">KI-Integration</span>
+              </div>
+              <ul class="text-sm text-muted space-y-1">
+                <li data-en="• Scaled company 8x in 6 years while preserving culture and quality" data-de="• Skalierte das Unternehmen in 6 Jahren um das 8-fache unter Bewahrung von Kultur und Qualität">• Skalierte das Unternehmen in 6 Jahren um das 8-fache unter Bewahrung von Kultur und Qualität</li>
+                <li data-en="• Built and led multidisciplinary design, content, and marketing teams" data-de="• Aufbau und Leitung multidisziplinärer Design-, Content- und Marketing-Teams">• Aufbau und Leitung multidisziplinärer Design-, Content- und Marketing-Teams</li>
+                <li data-en="• Developed AI-driven campaigns increasing qualified leads and shortening sales cycles" data-de="• Entwicklung KI-gestützter Kampagnen zur Steigerung qualifizierter Leads und Verkürzung der Verkaufszyklen">• Entwicklung KI-gestützter Kampagnen zur Steigerung qualifizierter Leads und Verkürzung der Verkaufszyklen</li>
+                <li data-en="• Established strategic technology partnerships expanding service portfolio" data-de="• Etablierung strategischer Technologiepartnerschaften zur Erweiterung des Serviceportfolios">• Etablierung strategischer Technologiepartnerschaften zur Erweiterung des Serviceportfolios</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="2023">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card rounded-xl p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-xl font-bold gradient-text" data-en="IT Software Engineer" data-de="IT-Softwareingenieur">IT-Softwareingenieur</h3>
+                <span class="timeline-year">2016-2018</span>
+              </div>
+              <h4 class="text-lg font-semibold text-contrast mb-2" data-en="Sanitas Krankenversicherung · Zurich" data-de="Sanitas Krankenversicherung · Zürich">Sanitas Krankenversicherung · Zürich</h4>
+              <p class="text-muted mb-3" data-en="Transformed Sanitas digital presence through strategic web and mobile initiatives. Led complete relaunch of sanitas.com while driving mobile innovation." data-de="Transformation der digitalen Präsenz von Sanitas durch strategische Web- und Mobile-Initiativen. Leitete die vollständige Neulancierung von sanitas.com und trieb gleichzeitig Mobile-Innovationen voran.">Transformation der digitalen Präsenz von Sanitas durch strategische Web- und Mobile-Initiativen. Leitete die vollständige Neulancierung von sanitas.com und trieb gleichzeitig Mobile-Innovationen voran.</p>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="timeline-tag" data-en="Technical Leadership" data-de="Technische Führung">Technische Führung</span>
+                <span class="timeline-tag" data-en="Scrum Master" data-de="Scrum Master">Scrum Master</span>
+                <span class="timeline-tag" data-en="Architecture" data-de="Architektur">Architektur</span>
+              </div>
+              <ul class="text-sm text-muted space-y-1">
+                <li data-en="• Expanded tech organization from 3 to 11 internal employees, coordinated 40+ external resources" data-de="• Ausbau der Tech-Organisation von 3 auf 11 interne Mitarbeitende, Koordination von über 40 externen Ressourcen">• Ausbau der Tech-Organisation von 3 auf 11 interne Mitarbeitende, Koordination von über 40 externen Ressourcen</li>
+                <li data-en="• Led complete sanitas.com relaunch with modern design and robust backend" data-de="• Leitung der vollständigen Neulancierung von sanitas.com mit modernem Design und robustem Backend">• Leitung der vollständigen Neulancierung von sanitas.com mit modernem Design und robustem Backend</li>
+                <li data-en="• Established CI/CD pipelines reducing deployment from days to hours" data-de="• Etablierung von CI/CD-Pipelines zur Reduzierung der Deployment-Zeit von Tagen auf Stunden">• Etablierung von CI/CD-Pipelines zur Reduzierung der Deployment-Zeit von Tagen auf Stunden</li>
+                <li data-en="• Member of Architecture Board influencing technology decisions across organization" data-de="• Mitglied des Architecture Boards mit Einfluss auf unternehmensweite Technologieentscheidungen">• Mitglied des Architecture Boards mit Einfluss auf unternehmensweite Technologieentscheidungen</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="2022">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card rounded-xl p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-xl font-bold gradient-text" data-en="Senior Software Engineer" data-de="Senior Softwareingenieur">Senior Softwareingenieur</h3>
+                <span class="timeline-year">2014-2016</span>
+              </div>
+              <h4 class="text-lg font-semibold text-contrast mb-2" data-en="Namics · Zurich Area, Switzerland" data-de="Namics · Raum Zürich, Schweiz">Namics · Raum Zürich, Schweiz</h4>
+              <p class="text-muted mb-3" data-en="Led implementation of Adobe AEM/CQ5 components and microservices. Provided technical guidance to frontend teams and managed project delivery." data-de="Leitete die Implementierung von Adobe AEM/CQ5-Komponenten und Microservices. Technische Beratung von Frontend-Teams und Management der Projektauslieferung.">Leitete die Implementierung von Adobe AEM/CQ5-Komponenten und Microservices. Technische Beratung von Frontend-Teams und Management der Projektauslieferung.</p>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="timeline-tag" data-en="Adobe AEM" data-de="Adobe AEM">Adobe AEM</span>
+                <span class="timeline-tag" data-en="SpringBoot" data-de="SpringBoot">SpringBoot</span>
+                <span class="timeline-tag" data-en="Technical Consulting" data-de="Technische Beratung">Technische Beratung</span>
+              </div>
+              <ul class="text-sm text-muted space-y-1">
+                <li data-en="• Implemented CQ4/CQ5 components and SpringBoot microservices" data-de="• Implementierung von CQ4/CQ5-Komponenten und SpringBoot-Microservices">• Implementierung von CQ4/CQ5-Komponenten und SpringBoot-Microservices</li>
+                <li data-en="• Counseled frontend teams on best practices and architecture" data-de="• Beratung von Frontend-Teams zu Best Practices und Architektur">• Beratung von Frontend-Teams zu Best Practices und Architektur</li>
+                <li data-en="• Conducted author trainings and managed project documentation" data-de="• Durchführung von Autoren-Schulungen und Management der Projektdokumentation">• Durchführung von Autoren-Schulungen und Management der Projektdokumentation</li>
+                <li data-en="• Oversaw testing, deployment, and server operations" data-de="• Überwachung von Testing, Deployment und Server-Betrieb">• Überwachung von Testing, Deployment und Server-Betrieb</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="2020">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card rounded-xl p-6 shadow-lg">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-xl font-bold gradient-text" data-en="Freelance IT Consultant" data-de="Freiberuflicher IT-Berater">Freiberuflicher IT-Berater</h3>
+                <span class="timeline-year">2007-2010</span>
+              </div>
+              <h4 class="text-lg font-semibold text-contrast mb-2" data-en="Oecovitag AG · Zurich Area" data-de="Oecovitag AG · Raum Zürich">Oecovitag AG · Raum Zürich</h4>
+              <p class="text-muted mb-3" data-en="Designed, implemented, and maintained all web projects while providing technical support and consulting services." data-de="Design, Implementierung und Wartung sämtlicher Webprojekte sowie Erbringung von technischem Support und Beratungsdienstleistungen.">Design, Implementierung und Wartung sämtlicher Webprojekte sowie Erbringung von technischem Support und Beratungsdienstleistungen.</p>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="timeline-tag" data-en="Full-Stack Development" data-de="Full-Stack-Entwicklung">Full-Stack-Entwicklung</span>
+                <span class="timeline-tag" data-en="Technical Consulting" data-de="Technische Beratung">Technische Beratung</span>
+                <span class="timeline-tag" data-en="Client Support" data-de="Kundenbetreuung">Kundenbetreuung</span>
+              </div>
+              <ul class="text-sm text-muted space-y-1">
+                <li data-en="• Built and maintained complete web solutions for multiple clients" data-de="• Entwicklung und Wartung vollständiger Web-Lösungen für diverse Kunden">• Entwicklung und Wartung vollständiger Web-Lösungen für diverse Kunden</li>
+                <li data-en="• Provided technical consulting and strategic guidance" data-de="• Technische Beratung und strategische Begleitung">• Technische Beratung und strategische Begleitung</li>
+                <li data-en="• Delivered end-to-end project management and support" data-de="• End-to-End-Projektmanagement und Support">• End-to-End-Projektmanagement und Support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Diplomas & CAS Section -->
+    <section id="diplomas" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-en="Diplomas & Certifications" data-de="Diplome & Zertifizierungen">Diplome & Zertifizierungen</h2>
+          <p class="text-xl text-contrast max-w-3xl mx-auto leading-relaxed" data-en="Advanced professional development in AI and digital leadership" data-de="Fortgeschrittene berufliche Weiterbildung in KI und Digital Leadership">Fortgeschrittene berufliche Weiterbildung in KI und Digital Leadership</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- CAS AI Innovation -->
+          <div class="hardware-card card card-hover rounded-xl p-6 shadow-lg stagger-delay-3">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-red rounded-lg flex items-center justify-center">
+                <span class="text-2xl">💡</span>
+              </div>
+              <div class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full" data-en="Planned" data-de="Geplant">Geplant</div>
+              <div class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full" data-en="2025/2026" data-de="2025/2026">2025/2026</div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="CAS AI Innovation" data-de="CAS KI-Innovation">CAS KI-Innovation</h3>
+            <p class="text-sm text-muted mb-3" data-en="Fachhochschule HWZ" data-de="Fachhochschule HWZ">Fachhochschule HWZ</p>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Comprehensive program on driving innovation through artificial intelligence. Focused on identifying AI use cases, managing innovation processes, and implementing AI solutions from prototype to production." data-de="Umfassendes Programm zur Innovationsförderung durch künstliche Intelligenz. Schwerpunkte: Identifikation von KI-Anwendungsfällen, Management von Innovationsprozessen sowie Implementierung von KI-Lösungen vom Prototyp bis zur Produktivsetzung.">Umfassendes Programm zur Innovationsförderung durch künstliche Intelligenz. Schwerpunkte: Identifikation von KI-Anwendungsfällen, Management von Innovationsprozessen sowie Implementierung von KI-Lösungen vom Prototyp bis zur Produktivsetzung.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag" data-en="AI Innovation" data-de="KI-Innovation">KI-Innovation</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag" data-en="Use Case Development" data-de="Use-Case-Entwicklung">Use-Case-Entwicklung</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag" data-en="Prototyping" data-de="Prototyping">Prototyping</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full card-tag" data-en="Innovation Management" data-de="Innovationsmanagement">Innovationsmanagement</span>
+            </div>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-contrast mb-2" data-en="Key Competencies:" data-de="Kernkompetenzen:">Kernkompetenzen:</h4>
+              <ul class="text-xs text-muted space-y-1">
+                <li data-en="• AI Innovation Process & Methods" data-de="• KI-Innovationsprozess & -methoden">• KI-Innovationsprozess & -methoden</li>
+                <li data-en="• Use Case Identification & Prioritization" data-de="• Use-Case-Identifikation & -priorisierung">• Use-Case-Identifikation & -priorisierung</li>
+                <li data-en="• From Prototype to Production" data-de="• Vom Prototyp zur Produktivsetzung">• Vom Prototyp zur Produktivsetzung</li>
+                <li data-en="• Change Management for AI Adoption" data-de="• Change Management für KI-Adoption">• Change Management für KI-Adoption</li>
+              </ul>
+            </div>
+          </div>
+          <!-- CAS Digital Leadership -->
+          <div class="hardware-card card card-hover rounded-xl p-6 shadow-lg stagger-delay-2">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-teal rounded-lg flex items-center justify-center">
+                <span class="text-2xl">👔</span>
+              </div>
+              <div class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full" data-en="In progress..." data-de="In Bearbeitung...">In Bearbeitung...</div>
+              <div class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full" data-en="2025" data-de="2025">2025</div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="CAS Digital Leadership" data-de="CAS Digital Leadership">CAS Digital Leadership</h3>
+            <p class="text-sm text-muted mb-3" data-en="Fachhochschule HWZ" data-de="Fachhochschule HWZ">Fachhochschule HWZ</p>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Comprehensive leadership program for digital transformation. Focused on strategic change management, digital innovation, and leading cross-functional teams in technology-driven environments." data-de="Umfassendes Leadership-Programm für digitale Transformation. Schwerpunkte: Strategisches Change Management, digitale Innovation sowie Führung cross-funktionaler Teams in technologiegetriebenen Umgebungen.">Umfassendes Leadership-Programm für digitale Transformation. Schwerpunkte: Strategisches Change Management, digitale Innovation sowie Führung cross-funktionaler Teams in technologiegetriebenen Umgebungen.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag" data-en="Digital Strategy" data-de="Digital-Strategie">Digital-Strategie</span>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag" data-en="Change Management" data-de="Change Management">Change Management</span>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag" data-en="Innovation Leadership" data-de="Innovations-Leadership">Innovations-Leadership</span>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 text-xs rounded-full card-tag" data-en="Agile Leadership" data-de="Agiles Leadership">Agiles Leadership</span>
+            </div>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-contrast mb-2" data-en="Core Competencies:" data-de="Kernkompetenzen:">Kernkompetenzen:</h4>
+              <ul class="text-xs text-muted space-y-1">
+                <li data-en="• Digital Transformation Strategy" data-de="• Digital-Transformationsstrategie">• Digital-Transformationsstrategie</li>
+                <li data-en="• Leading Innovation Processes" data-de="• Führung von Innovationsprozessen">• Führung von Innovationsprozessen</li>
+                <li data-en="• Change Management & Culture" data-de="• Change Management & Unternehmenskultur">• Change Management & Unternehmenskultur</li>
+                <li data-en="• Agile Organizational Design" data-de="• Agile Organisationsgestaltung">• Agile Organisationsgestaltung</li>
+              </ul>
+            </div>
+          </div>
+          <!-- CAS AI-Powered Digital Marketing -->
+          <div class="hardware-card card card-hover rounded-xl p-6 shadow-lg stagger-delay-1">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 card-icon-bg-purple rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🤖</span>
+              </div>
+              <div class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full" data-en="2025" data-de="2025">2025</div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-contrast" data-en="CAS AI-Powered Digital Marketing" data-de="CAS KI-gestütztes Digital Marketing">CAS KI-gestütztes Digital Marketing</h3>
+            <p class="text-sm text-muted mb-3" data-en="Fachhochschule HWZ" data-de="Fachhochschule HWZ">Fachhochschule HWZ</p>
+            <p class="card-content mb-4 text-sm leading-relaxed text-muted" data-en="Advanced program focusing on AI-driven marketing strategies, automation, and predictive analytics. Learned to implement machine learning models for customer segmentation, personalize campaigns at scale, and optimize ROI through intelligent automation." data-de="Fortgeschrittenes Programm mit Fokus auf KI-gestützte Marketingstrategien, Automatisierung und Predictive Analytics. Implementierung von Machine-Learning-Modellen für Kundensegmentierung, Personalisierung von Kampagnen im grossen Massstab sowie ROI-Optimierung durch intelligente Automatisierung.">Fortgeschrittenes Programm mit Fokus auf KI-gestützte Marketingstrategien, Automatisierung und Predictive Analytics. Implementierung von Machine-Learning-Modellen für Kundensegmentierung, Personalisierung von Kampagnen im grossen Massstab sowie ROI-Optimierung durch intelligente Automatisierung.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag" data-en="AI Marketing" data-de="KI-Marketing">KI-Marketing</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag" data-en="Predictive Analytics" data-de="Predictive Analytics">Predictive Analytics</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag" data-en="Marketing Automation" data-de="Marketing-Automatisierung">Marketing-Automatisierung</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full card-tag" data-en="Customer Segmentation" data-de="Kundensegmentierung">Kundensegmentierung</span>
+            </div>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-contrast mb-2" data-en="Key Modules:" data-de="Kernmodule:">Kernmodule:</h4>
+              <ul class="text-xs text-muted space-y-1">
+                <li data-en="• AI Strategy & Implementation" data-de="• KI-Strategie & -implementierung">• KI-Strategie & -implementierung</li>
+                <li data-en="• Automated Content Generation" data-de="• Automatisierte Content-Generierung">• Automatisierte Content-Generierung</li>
+                <li data-en="• Predictive Customer Analytics" data-de="• Predictive Customer Analytics">• Predictive Customer Analytics</li>
+                <li data-en="• Intelligent Campaign Optimization" data-de="• Intelligente Kampagnenoptimierung">• Intelligente Kampagnenoptimierung</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer" class="py-12 px-4 border-t border-gray-200 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-8">
+          <div class="text-2xl font-bold gradient-text mb-4">Let's connect</div>
+          <p class="text-gray-600 dark:text-gray-300 mb-6" data-en="CMO & AI Enthusiast transforming marketing through intelligent automation." data-de="CMO & KI-Enthusiast, der Marketing durch intelligente Automatisierung transformiert.">CMO & KI-Enthusiast, der Marketing durch intelligente Automatisierung transformiert.</p>
+          
+          <!-- Optimized Social Links -->
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="https://github.com/jeremycottontail" target="_blank" class="btn-social">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span data-en="GitHub" data-de="GitHub">GitHub</span>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/haasjeremy/" target="_blank" class="btn-social">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span data-en="LinkedIn" data-de="LinkedIn">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-6"> 
+          © 2025 Jeremy Haas. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten."></span>
+        </div>
+      </div>
+    </footer>
+    <!-- Load modular JavaScript -->
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
