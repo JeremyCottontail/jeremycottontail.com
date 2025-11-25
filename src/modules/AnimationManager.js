@@ -7,83 +7,118 @@ import { config } from '../config/config.js';
 
 export class AnimationManager {
   constructor() {
-    this.isMouseMoving = false;
-    this.idleTimer = null;
     this.animationConfig = config.animation;
   }
 
-  /**
-   * Set up floating blob background animation
-   */
   setupBlobAnimation() {
-    const blob = document.getElementById('blob');
-    if (!blob) return;
-    
-    // Mobile: use only idle animation, no mouse tracking
-      if (window.innerWidth < 768 || this.isTouchDevice()) {
-        blob.style.display = 'block';
-        this.startIdleAnimation();
-        return;
-      }
-    
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let blobX = window.innerWidth / 2;
-    let blobY = window.innerHeight / 2;
-
-    // Mouse movement handler
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      this.isMouseMoving = true;
-
-      // Restart idle timer
-      clearTimeout(this.idleTimer);
-      this.idleTimer = setTimeout(() => {
-        this.isMouseMoving = false;
-      }, this.animationConfig.blobIdleTimeout);
-    });
-
-    // Smooth blob following animation
-    const animateBlob = () => {
-      const deltaX = mouseX - blobX;
-      const deltaY = mouseY - blobY;
-      
-      blobX += deltaX * this.animationConfig.blobSmoothness;
-      blobY += deltaY * this.animationConfig.blobSmoothness;
-      
-      blob.style.left = (blobX - 250) + 'px';
-      blob.style.top = (blobY - 250) + 'px';
-      
-      requestAnimationFrame(animateBlob);
-    };
-
-    animateBlob();
-    this.startIdleAnimation();
+  // Skip on mobile for performance
+  if (window.innerWidth < 768 || this.isTouchDevice()) {
+    return;
   }
+  
+  // Create canvas
+  const canvas = document.createElement('canvas');
+  canvas.id = 'mouse-follow-canvas';
+  document.body.appendChild(canvas);
+  
+  const ctx = canvas.getContext('2d');
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let effectX = mouseX;
+  let effectY = mouseY;
+  let isMouseMoving = false;
+  let idleTime = 0;
+  
+  // Resize handler
+  const resizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.scale(dpr, dpr);
+  };
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  
+  // Mouse tracking with performance throttle
+  let mouseTimer;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    isMouseMoving = true;
+    idleTime = 0;
+    
+    clearTimeout(mouseTimer);
+    mouseTimer = setTimeout(() => {
+      isMouseMoving = false;
+    }, 2000);
+  });
+  
+  // Animation loop
+  const animate = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    
+    // Smooth easing (adjust 0.03 for faster/slower follow)
+    effectX += (mouseX - effectX) * 0.03;
+    effectY += (mouseY - effectY) * 0.03;
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Main gradient circle
+    const radius = Math.min(window.innerWidth, window.innerHeight) * 0.28;
+    const gradient = ctx.createRadialGradient(
+      effectX, effectY, 0,
+      effectX, effectY, radius
+    );
+    
+    if (isDark) {
+      gradient.addColorStop(0, 'rgba(100, 181, 246, 0.4)');
+      gradient.addColorStop(0.4, 'rgba(139, 92, 246, 0.3)');
+      gradient.addColorStop(1, 'transparent');
+    } else {
+      gradient.addColorStop(0, 'rgba(74, 144, 226, 0.8)');
+      gradient.addColorStop(0.4, 'rgba(255, 107, 107, 0.3)');
+      gradient.addColorStop(1, 'transparent');
+    }
+    
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(effectX, effectY, radius, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Secondary subtle glow
+    const glowRadius = radius * 0.8;
+    const glowGradient = ctx.createRadialGradient(
+      effectX, effectY, 0,
+      effectX, effectY, glowRadius
+    );
+    
+    glowGradient.addColorStop(0, isDark ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255, 107, 107, 0.2)');
+    glowGradient.addColorStop(1, 'transparent');
+    
+    ctx.fillStyle = glowGradient;
+    ctx.beginPath();
+    ctx.arc(effectX, effectY, glowRadius, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Idle animation when mouse stops
+    if (!isMouseMoving) {
+      idleTime += 0.008;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const idleRadius = 120;
+      
+      mouseX = centerX + Math.sin(idleTime) * idleRadius;
+      mouseY = centerY + Math.cos(idleTime * 0.7) * idleRadius * 0.8;
+    }
+    
+    requestAnimationFrame(animate);
+  };
+  
+  animate();
+}
 
-  /**
-   * Start idle animation for blob when mouse is not moving
-   */
-  startIdleAnimation() {
-    const blob = document.getElementById('blob');
-    if (!blob) return;
-    
-    let time = 0;
-    
-    const idleAnimate = () => {
-      if (!this.isMouseMoving) {
-        time += this.animationConfig.blobIdleSpeed;
-        const x = Math.sin(time) * 50;
-        const y = Math.cos(time * 0.7) * 40;
-        
-        blob.style.transform = `translate(${x}px, ${y}px)`;
-      }
-      requestAnimationFrame(idleAnimate);
-    };
-    
-    idleAnimate();
-  }
 
   /**
    * Set up scroll-based reveal animations
