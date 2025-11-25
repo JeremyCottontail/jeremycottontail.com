@@ -1,7 +1,5 @@
 # jeremycottontail.com - Portfolio Website
 
-![Website Preview](https://raw.githubusercontent.com/jeremycottontail/jeremycottontail.com/main/resources/N47_Jeremy_Haas.jpg)
-
 ## Project Overview
 
 This is a modern, responsive portfolio website for Jeremy Haas, showcasing his professional background, AI development infrastructure, and homelab setup. The site features a sleek dark/light theme toggle, multilingual support (German/English), interactive elements, and showcases his work in AI development and digital marketing.
